@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start OPA server in background once
-opa run --server ../../policies &> /dev/null &
+opa run --server --watch ../../policies &> /dev/null &
 OPA_PID=$!
 
 # Wait for OPA server to be ready
@@ -19,7 +19,7 @@ run_test() {
   local expected_output="$3"
 
   local response
-  response=$(curl -s -X POST localhost:8181/v1/data/ghaf/usb_hotplug/allowed_vms \
+  response=$(curl -s -X POST localhost:8181/v1/data/usb_hotplug/allowed_vms \
     -H "Content-Type: application/json" \
     -d "$input_json")
 
@@ -46,11 +46,11 @@ run_test "TEST3" '{"input":{"vendor_id":"0x04f2","product_id":"0xb751","class":"
 
 run_test "TEST4" '{"input":{"vendor_id":"0x04f2","product_id":"0xb755","class":"0x0e","subclass":"0x02","protocol":"0x01"}}' '{"result":["chrome-vm"]}'
 
-run_test "TEST5" '{"input":{"vendor_id":"0x04f2","product_id":"0xb755","class":"0xe0","subclass":"0x01","protocol":"0x01"}}' '{"result":["gui-vm"]}'
+run_test "TEST5" '{"input":{"vendor_id":"0x04f2","product_id":"0xb755","class":"0xe0","subclass":"0x01","protocol":"0x01"}}' '{"result":[]}'
 
 run_test "TEST6" '{"input":{"vendor_id":"0xbadb","product_id":"0xdada","class":"0xe0","subclass":"0x01","protocol":"0x01"}}' '{"result":[]}'
 
-run_test "TEST7" '{"input":{"vendor_id":"0xbabb","product_id":"0xcaca","class":"0xe0","subclass":"0x01","protocol":"0x01"}}' '{"result":["gui-vm"]}'
+run_test "TEST7" '{"input":{"vendor_id":"0xbabb","product_id":"0xcaca","class":"0xe0","subclass":"0x01","protocol":"0x01"}}' '{"result":[]}'
 
 run_test "TEST8" '{"input":{"vendor_id":"0xbabb","product_id":"0xb755","class":"0xe0","subclass":"0x01","protocol":"0x01"}}' '{"result":[]}'
 

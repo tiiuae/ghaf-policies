@@ -161,11 +161,10 @@ if __name__ == "__main__":
     }
     '''
 
-    #with open("../../policies/usb_hotplug_rules.json", 'r') as fp:
     with open("../../policies/usb_hotplug_rules.json", 'r') as fp:
         data = json.load(fp)
 
-    rules = data["rules"]
+    rules = data["usb_hotplug_rules"]
 
     run_test(
         test_id="TEST1",
@@ -219,7 +218,7 @@ if __name__ == "__main__":
         vendor_id="0x04f2",
         product_id="0xb755",
         protocol="0x01",
-        expected_vms=["gui-vm"]
+        expected_vms=[]
     )
 
     run_test(
@@ -241,7 +240,7 @@ if __name__ == "__main__":
         vendor_id="0xbabb",
         product_id="0xcaca",
         protocol="0x01",
-        expected_vms=["gui-vm"]
+        expected_vms=[]
     )
 
     run_test(

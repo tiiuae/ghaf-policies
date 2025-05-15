@@ -1,5 +1,5 @@
 
-package ghaf.usb_hotplug
+package usb_hotplug
 import future.keywords.in
 
 # Rule to populate the set of allowed VMs for the input device.
@@ -11,10 +11,10 @@ allowed_vms = vms if {
     input.vendor_id
     input.product_id
 
-    blacklist = data.rules.blacklist
-    whitelist = data.rules.whitelist
-    class_rules = data.rules.class_rules
-    vm_device_filter = data.rules.device_filter
+    blacklist = data.usb_hotplug_rules.blacklist
+    whitelist = data.usb_hotplug_rules.whitelist
+    class_rules = data.usb_hotplug_rules.class_rules
+    vm_device_filter = data.usb_hotplug_rules.device_filter
     # Check if the device is blacklisted
     not blacklisted(blacklist, input.vendor_id, input.product_id)
     # Check if the device is mapped to a specific VM

@@ -1,5 +1,11 @@
 {
-  "rules": {
+  "usb_hotplug_rules": {
+    "vms" : {
+      "audio-vm" : "/var/lib/microvms/audio-vm/audio-vm.sock",
+      "gui-vm" : "/var/lib/microvms/gui-vm/gui-vm.sock",
+      "net-vm" : "/var/lib/microvms/net-vm/net-vm.sock",
+      "chrome-vm" :"/var/lib/microvms/chrome-vm/chrome-vm.sock"
+    },
     "_blacklist_" : [ 
       "List of blacklisted devices.",
       "Format: vendor_id : [list of products].",
@@ -39,7 +45,6 @@
         "0x08:0x06:*" : ["gui-vm"],
         "0x0b:*:*" : ["gui-vm"],
         "0x11:*:*" : ["gui-vm"],
-        "0xe0:0x01:0x01" : ["gui-vm"],
         "0x02:06:*" : ["net-vm"],
         "0x0e:*:*" : ["chrome-vm"]
     },
