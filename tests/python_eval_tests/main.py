@@ -162,10 +162,10 @@ if __name__ == "__main__":
     '''
 
     #with open("../../policies/usb_hotplug_rules.json", 'r') as fp:
-    with open("../../policies/usb_hotplug_rules.json", 'r') as fp:
+    with open("../../policies/lenovo/usb_hotplug_rules.json", 'r') as fp:
         data = json.load(fp)
 
-    rules = data["rules"]
+    rules = data["usb_hotplug_rules"]
 
     run_test(
         test_id="TEST1",

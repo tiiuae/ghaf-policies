@@ -1,4 +1,4 @@
-{ pkgs ? import /workspace/repositories/gngram/nixpkgs/nixpkgs {} }:
+{ pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
   buildInputs = [

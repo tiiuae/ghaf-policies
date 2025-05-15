@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start OPA server in background once
-opa run --server ../../policies &> /dev/null &
+opa run --server ../../policies/lenovo &> /dev/null &
 OPA_PID=$!
 
 # Wait for OPA server to be ready
@@ -19,7 +19,7 @@ run_test() {
   local expected_output="$3"
 
   local response
-  response=$(curl -s -X POST localhost:8181/v1/data/ghaf/usb_hotplug/allowed_vms \
+  response=$(curl -s -X POST localhost:8181/v1/data/usb_hotplug/allowed_vms \
     -H "Content-Type: application/json" \
     -d "$input_json")
 
