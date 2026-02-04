@@ -1,0 +1,14 @@
+{
+    "vm_policies": {
+        "vm-A": {
+            "vm-B": ["read", "write", "restart"],
+            "database-vm": ["read"]
+        },
+        "vm-B": {
+            "central-logger-vm": ["write"]
+        },
+        "vm-c": {
+            "logger-vm": ["read"]
+        }
+    }
+}

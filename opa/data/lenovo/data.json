@@ -1,0 +1,19 @@
+{
+  "hotplug_rules": {
+    "allowlist": {
+      "0x0b95:0x1790": ["net-vm"],
+      "0x30c9:0x005f": ["business-vm"],
+      "0x8087:0x0033": ["audio-vm"],
+      "0x06cb:0x00fc": ["gui-vm"]
+    },
+
+    "classlist": {
+      "0x01:*:*": ["audio-vm"],
+      "0x03:*:0x01": ["gui-vm"],
+      "0x0b:*:*": ["gui-vm"],
+      "0x02:06:*": ["net-vm"],
+      "0x0e:*:*": ["chrome-vm"],
+      "xxx": 20
+    }
+  }
+}
