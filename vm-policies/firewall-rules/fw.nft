@@ -1,0 +1,17 @@
+# 1. Ensure the table exists (does nothing if already there)
+add table inet filter
+
+# 2. Now it is safe to flush it
+flush table inet filter
+
+table inet filter {
+    chain output {
+        type filter hook output priority 0; policy accept;
+
+        # Block IPv4 ChatGPT
+        ip daddr { 172.64.155.209, 104.18.32.47 } reject
+        
+        # Block IPv6 ChatGPT
+        ip6 daddr { 2a06:98c1:310b::ac40:9bd1, 2a06:98c1:3100::6812:202f } reject
+    }
+}
